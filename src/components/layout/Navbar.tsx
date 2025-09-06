@@ -1,4 +1,4 @@
-import { Bell, Search, Settings, User, Moon, Sun, ChevronDown } from "lucide-react";
+import { Bell, Search, Settings, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -11,20 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export const Navbar = () => {
-  const [isDark, setIsDark] = useState(true);
-
   useEffect(() => {
-    // Set dark mode by default
+    // Set dark mode by default and keep it permanently
     document.documentElement.classList.add('dark');
   }, []);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
-  };
 
   return (
     <nav className="h-16 border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
@@ -54,20 +47,6 @@ export const Navbar = () => {
 
         {/* Right Section */}
         <div className="flex items-center space-x-4">
-          {/* Theme Toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleTheme}
-            className="hover:bg-secondary/50 transition-colors"
-          >
-            {isDark ? (
-              <Sun className="h-4 w-4" />
-            ) : (
-              <Moon className="h-4 w-4" />
-            )}
-          </Button>
-
           {/* Notifications */}
           <Button
             variant="ghost"
